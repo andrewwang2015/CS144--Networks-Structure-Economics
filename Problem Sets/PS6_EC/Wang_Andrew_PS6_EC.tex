@@ -1,0 +1,92 @@
+\documentclass[12 pt]{article}
+\usepackage{fancyhdr}
+\usepackage[margin = 1 in]{geometry}
+\usepackage{amsmath}
+\usepackage{enumerate}
+% \usepackage{indentfirst}
+\pagestyle{fancy}
+\usepackage{graphicx}
+\usepackage[version=3]{mhchem}
+\fancyhf{}
+\usepackage{sectsty}	
+\lhead{Andrew Wang}
+\chead{\textbf{CS144}}
+\rhead{Wierman}
+%\sectionfont{\fontsize{15}{18}\selectfont}
+\usepackage{graphicx}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\begin{document}
+	\begin{center}
+		\section*{Problem Set 6 EXTRA CREDIT}
+	\end{center}
+	
+	\subsection*{Problem 4}
+	
+	\noindent Yes, the dominant strategy is for the sellers and buyers to bid truthfully. To reason about this, the big idea is to think of the seller as a third bidder with value $s$ (they are equivalent because having an extra bid of $s$ means that the winning sell price can not be less than $s$). Furthermore, because we've shown bidding truthfully to be a dominant strategy for normal second price auctions, it still should be the case here with three bidders. Now, we dive into a bit more specifics about why truthfully bidding $s$, $v_1$, and $v_2$ are dominant by analyzing the three cases:
+	
+	\begin{enumerate}
+		\item $s < v_1 < v_2$. WLOG, this takes care of the case when the reserve price is less than both buyers' values. Because $v_1$ and $v_2$ are both greater than $s$, then we know that the seller will be satisfied because the price that is paid ($v_1$) is greater than $s$. The seller has no reason to increase the reserve price in such a scenario because doing could only decrease his earnings (if it go to the point where $s$ > $v_1$, then the seller would make nothing as opposed to $v_1 - s$ if he just was just truthful). Because the seller's reserve price (which we can think of as a third bid) is thus irrelevant, this situation reduces to a second-price auction with just buyer 1 and 2, which we know to have a truth dominant strategy. 
+		\item $v_1 < s < v_2$. WLOG, this case takes care of the case when one buyer's value is less than the reserve price and one's is greater than it. In this case, we have that the seller will be truthful in keeping his reserve price / bid at $s$ (in which case he will make 0) because he cannot gain anything from lowering it (he makes 0 from the winner paying $s$) or increasing it (he makes 0 from not selling the item). Similarly, in this case buyer 1 makes 0, but has no incentive to decrease it (which would also yield 0) or increase it to a value greater than $v_2$ to win (which would yield a negative payoff because then he would be paying more than what its worth because he would then be paying $v_2$, which we know to be more than $v_1$). Lastly, buyer 2 has no incentive to switch because right now, he would be gaining $v_2 - s$ value. If he increases his bid, he would be making the same amount and if he decreases his bid, he would risk going lower than $s$ and thus make 0 gain. 
+		\item $v_1 < v_2 < s$. WLOG, this takes care of the case when the reserve price is greater than both the buyer's values of the product being sold. In this case, everybody makes 0 and we have yet another equilibrium. The seller has no reason to lower the reserve price because doing so would risk him losing money from selling the product at a value less than its true value. Similarly, buyer 2 and buyer 1 both value the item less than the reserve price and there's no reason for either of them to increase their bid to win because doing so would mean they would pay at least the reserve price for the item and because we know their true value for the product is less than the reserve price, then they would be losing money by increasing their bids. 
+	\end{enumerate}
+
+	\noindent Hence, we've shown second price auctions with reserve prices to be dominant strategy truthful.\\
+	
+	\subsection*{Problem 5}
+	
+	\noindent \textbf {a.} Below, we construct an example for which the PPoA is $r$. To do so, we present two equilibriums, one with a social welfare of $r^2$, and one with a social welfare of $r$. For our example, we let $v_1 = r$, $v_2 = 0$, $\alpha_1 = r$, $\alpha_2 = 1$. Now, for our first situation, we let player 1 bid 1 and player 2 bid 0. To see why this is an equilibrium, we note that player 2 who has a utility of 0 will not bid more than 0 because his current value $v_2 = 0$, so bidding more to win would only give him less utility. Because player 2 is already bidding 0, he cannot bid any less because $b_i \geq 0$. For player 1, he has no reason to increase his bid because his current bid already wins the top slot. Similarly, he has no reason to decrease his bid because doing so would risk him losing the top slot which could only result in decreased utility. In this above situation, we have player 1 winning slot 1 and player 2 winning slot 2 for a social welfare of $(r)(r) + (0)(1) = r^2$. \\
+	
+	\noindent In a second equilibrium situation, we have player 1 bid 0 and player 2 bid $r$. This is an equilibrium situation for player 1 because his current utility is $r$. Player 1 cannot choose to bid less than 0 due to restriction that bids are non-negative. Increasing his bid to at least $r$ to win the first slot would either give 0 (if he wins by bidding $r$) or negative (if he wins by bidding more than $r$) utility because player 2 has a bid of $r$. Thus, player 1 will not choose to deviate from his decision of bidding 0. For player 2, he will not choose to deviate from bidding $r$ because bidding more than $r$ still means that he will win the top slot and have the same utility. Bidding less (more specifically, if he bid 0 just like player 1) would mean he would potentially lose the top slot and thus have his utility decreased because $\alpha_2 < \alpha_1$. In this case, player 2 wins the top slot and so our total social welfare is $r(0) + 1(r) = r$. Note that this is the minimum social welfare given our setup of $v_1 = r$, $v_2 = 0$, $\alpha_1 = r$, and $\alpha_2 = 1$. \\
+	
+	
+	\noindent Hence, we have an equilibrium from our first case of $r^2$ and an equilibrium in our second case with a social welfare of $r$. Thus, our PPoA is $\frac{r^2}{r} = r$, as desired. \\
+	
+	\noindent Perhaps a simpler way to think of this is: have $v_1 = 0$, $v_2 = 0$, $\alpha_1 = 1$, and $\alpha_2 = 0$. From similar logic to the one above, we have an equilibrium where bidder 1 bids 0 and bidder 2 bids 1 which will give a social welfare of 0, while clearly, the optimal is 1. Thus, we have shown the price of anarchy to be unbounded. \\
+	
+	\noindent \textbf{b.} \\
+	
+	\noindent \textbf {i.} The dominated strategy in our previous game is for any player to make a bid more than their value for what they're bidding for. In the first situation of the above example, player 1 can bid 1 and have an equilibrium because player 2 has a valuation of 0 and thus has no reason to bid anything more than his true valuation. If player 2 was to play the dominated strategy and bid more than 0, he may win, but his utility would become negative because now he is bidding more than its valuation. Similarly, in situation 2, bidder 2 can bid $r$ and it be equilibrium because he knows bidder 1 has no reason to bid more than his true valuation (the dominated strategy)of $r$ to win the top slot. \\
+	
+	\noindent \textbf{ii.} Now, we show that non-conservative bids are always dominated strategies. Let's assume, to the contrary, that non-conservative bids are NOT dominated strategies. This means that there exists some strategy that gives less utility than that of a non-conservative bid. First, we know that a non-conservative bid means that $b_i > v_i$. Now, we can divide the case up into three scenarios.
+	
+	\begin{enumerate}
+		\item The next highest bid, let's call $b'$ is $>$ $v_i$. If this is the case, then the utility would be negative because $v_i - b' < 0$. In this case, all other strategies would yield a non-negative utility so hence, there does not exist another strategy that gives less utility than that of a non-conservative bid.
+		\item $b' = v_i$. In this case, the utility is always 0 because $b' - v_i = 0$, so there does not exist another strategy that gives less utility than that of a non-conservative bid.
+		\item $b' < v_i$. In this case, bidding $b_i$ is no better than bidding $v_i$ (conservatively) because in both cases, the player wins the same slot and gets the same payoff. 
+	\end{enumerate}
+
+	\noindent Hence, we've shown that there is no strategy that gives less utility than that of a non-conservative bid and thus our initial assumption that non-conservative bids are not dominated strategies is incorrect. \\
+	
+	\noindent \textbf{iii.} Now, we show that when $n = 2$, if both advertisers are conservative, then the PPoA is exactly 1.25. To do so, we let $v_1 = r$, $v_2 = \frac{r}{2}$, $\alpha_1 = 1$, and $\alpha_2 = \frac{1}{2}$. If the bids are $b_1 = 0$, and $b_2 = \frac{r}{2}$, it's not hard to see that we have an equilibrium because bidder 1 has no incentive to increase his bid because currently, his utility is $\frac{1}{2}$, and increasing it to win would only give him a utility between 0 and 0.5 which is no greater. Bidder 2 has no incentive to change his bid because with bidder 1 bidding 0, his utility is $\frac{r}{2}$ unless he loses the top slot by bidding 0 which would only decrease his utility. In this case bidder 2 wins the top slot and bidder 1 wins the bottom slot for a social welfare of $\frac{r}{2} + \frac{r}{2} = r$. Now, let's say bidder 1 bids $r$ and bidder 2 bids 0. Again, we have an equilibrium. Bidder 2 has no reason to bid any less than 1 because doing so would only put him at risk of losing the top slot and thus decrease his utility. Bidder 1 has no reason to change his bid because no matter what, there's no way for him to win the top slot given that he's playing conservatively. In this situation, player 1 wins the top slot and player 2 wins the second slot for a social welfare of $r(1) + \frac{r}{2}\frac{1}{2} = \frac{5r}{4}$. Calculating the PPoA of these two, we have $\frac{5r}{4} \frac{1}{r} = \frac{5}{4} = 1.25$, as desired. \\
+	
+	\noindent \textbf{iv.} First, according to the hint, we show that any permutation corresponding to a conservative Nash equilibrium is weakly feasible. Given that we have a Nash equilibrium, the bidder in slot $j$ has no incentive to up his bid to get slot $i$. By definition, this means:
+	
+	\[
+	\alpha_j (v_{\pi_j} - b_{\pi_{j+1}}) \geq \alpha_i (v_{\pi_j} - b_{\pi_{i+1}}) 
+	\]
+	
+	\noindent Now, we know that all bids must be non-negative and conservative, so we know that $b_{\pi_i} \leq v_{\pi_i}$, so we can rewrite the above inequality as:
+
+	\[
+	\begin{split}	
+	\alpha_j (v_{\pi_j}) &\geq \alpha_i (v_{\pi_j} - v_{\pi_i}) \\
+	\frac{\alpha_j}{\alpha_i} &\geq \frac{(v_{\pi_j} - v_{\pi_i})}{v_{\pi_j}}\\
+	\frac{\alpha_j}{\alpha_i} &\geq 1 - \frac{v_{\pi_i}}{v_{\pi_j}}\\
+	\frac{\alpha_j}{\alpha_i} + \frac{v_{\pi_i}}{v_{\pi_j}} &\geq 1	\\
+	\end{split}
+	\]
+	
+	\noindent Note, that the above also means that $\frac{\alpha_j}{\alpha_i} \geq \frac{1}{2}$ or $\frac{v_{\pi_i}}{v_{\pi_j}} \geq \frac{1}{2}$. Now, as mentioned in the hint, we restrict our attention to maximizing PPoA over weakly feasible permutations. Let's use induction. The base case, for when $n = 1$, is trivial. Now, let's assume the bound holds for $n = n'$. Let slot $i$ be the slot occupied by the advertiser with maximum valuation while $k$ be the current advertiser at the top slot. If the top valuator gets the top slot, then we are done. Otherwise, we can break it down into two cases:\\
+	
+	\noindent For case 1, we have that $\frac{\alpha_i}{\alpha_1} \geq \frac{1}{2}$. Now, let's consider the original input, but now without slot $i$ and advertiser 1. Due to our induction hypothesis, we know that this permutation is still weakly feasible meaning:\\
+	
+	\noindent (Got stuck here...)\\
+	
+	\noindent For case 2, we have that: $\frac{v_k}{v_1} \geq {frac}{1}{2}.$ Now, let's consider the original input, but without slot 1 and advertiser $k$. As before, we know that this permutation is still weakly feasible meaning:\\
+	
+	\noindent (Got stuck here...)\\
+		
+\end{document}
